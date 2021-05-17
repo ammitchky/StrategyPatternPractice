@@ -2,6 +2,6 @@ namespace StrategyPatternPractice
 {
     public interface IVehicleStrategy
     {
-        decimal calculateCost(int currCapacity, int maxCapacity);
+        decimal CalculateCost(int currCapacity, int maxCapacity);
     }
 }
