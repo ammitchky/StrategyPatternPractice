@@ -1,4 +1,5 @@
-﻿using System.Globalization;
+﻿using System;
+using System.Globalization;
 using StrategyPatternPractice;
 
 namespace DefaultNamespace
@@ -7,10 +8,13 @@ namespace DefaultNamespace
     {
         public string RefuelVehicle(IVehicleStrategy strategy, int currentCapacity, int maxCapacity)
         {
+            if(currentCapacity > maxCapacity){
+                throw new ApplicationException("Current capacity exceeds max capacity.");
+            }
+            
             decimal strat = strategy.CalculateCost(currentCapacity, maxCapacity);
 
-            // ReSharper disable once SpecifyACultureInStringConversionExplicitly
-            return strat.ToString();
+            return "$" + strat.ToString("0.00") + " gallons: " + (maxCapacity - currentCapacity);
         }
     }
 }
